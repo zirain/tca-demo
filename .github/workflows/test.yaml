@@ -21,16 +21,11 @@ jobs:
           tis-password: ${{ secrets.TIS_PASSWORD }}
           # mesh-config: "./configs/manifests.yaml ./configs/failed.yaml" # Multiple files with space separator
           # OR use newline separator
+          local-only: true
           mesh-config: |-
             ./configs/failed.yaml
             ./configs/manifests.yaml
           # kube-config: ${{ secrets.KUBECONFIG }}
-      
-      - name: test
-        env:
-          TIS_PASS: ${{ secrets.TIS_PASSWORD }}
-        run: |
-          tca analyze --output-disabled-hyperlink=true -f /home/runner/work/tca-demo/tca-demo/./configs/failed.yaml -f /home/runner/work/tca-demo/tca-demo/./configs/manifests.yaml
 
       - name: Comment on PR
         uses: thollander/actions-comment-pull-request@v3
