@@ -31,7 +31,7 @@ jobs:
         env:
           TIS_PASS: ${{ secrets.TIS_PASSWORD }}
         run: |
-          tca analyze --local-only --output-disabled-hyperlink=true -f /home/runner/work/tca-demo/tca-demo/./configs/failed.yaml -f /home/runner/work/tca-demo/tca-demo/./configs/manifests.yaml
+          tca analyze --local-only --output-disabled-hyperlink=true -f ./configs/failed.yaml -f ./configs/manifests.yaml
 
       - name: Comment on PR
         uses: thollander/actions-comment-pull-request@v3
