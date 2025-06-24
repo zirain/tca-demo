@@ -17,11 +17,11 @@ jobs:
         uses: tetratelabs/tca-action@main
         with:
           tis-password: ${{ secrets.TIS_PASSWORD }}
-          mesh-config: "./configs/manifests.yaml ./configs/failed.yaml" # Multiple files with space separator
+          # mesh-config: "./configs/manifests.yaml ./configs/failed.yaml" # Multiple files with space separator
           # OR use newline separator
-          # mesh-config: |-
-          #   ./configs/gateway.yaml
-          #   ./configs/virtualservice.yaml
+          mesh-config: |-
+            ./configs/failed.yaml
+            ./configs/manifests.yaml
           # kube-config: ${{ secrets.KUBECONFIG }}
 
       - name: Comment on PR
