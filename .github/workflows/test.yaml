@@ -25,17 +25,13 @@ jobs:
           mesh-config: |-
             ./configs/failed.yaml
             ./configs/manifests.yaml
+            ./configs/meshconfig.yaml
           # kube-config: ${{ secrets.KUBECONFIG }}
-      
-      - name: test
-        env:
-          TIS_PASS: ${{ secrets.TIS_PASSWORD }}
-        run: |
-          tca analyze --local-only --output-disabled-hyperlink=true -f ./configs/failed.yaml -f ./configs/manifests.yaml
 
       - name: Comment on PR
         uses: thollander/actions-comment-pull-request@v3
         with:
+          mode: upsert
           file-path: ${{ steps.tca.outputs.result-file }}
 
       - name: Optionally Fail if there are errors
