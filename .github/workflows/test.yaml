@@ -27,6 +27,8 @@ jobs:
           # kube-config: ${{ secrets.KUBECONFIG }}
       
       - name: test
+        env:
+          TIS_PASS: ${{ secrets.TIS_PASSWORD }}
         run: |
           tca analyze --output-disabled-hyperlink=true -f /home/runner/work/tca-demo/tca-demo/./configs/failed.yaml -f /home/runner/work/tca-demo/tca-demo/./configs/manifests.yaml
 
